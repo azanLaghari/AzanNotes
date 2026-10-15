@@ -1,0 +1,129 @@
+<div class="notes-layout">
+
+  <!-- Sidebar -->
+  <aside class="sidebar">
+
+    <a class="back-home" routerLink="/">← Home</a>
+
+    <h2>Collection Framework</h2>
+
+    <p class="sidebar-subtitle">
+      Learn Java step by step
+    </p>
+
+    <div class="topic-list">
+
+      @for (topic of collectionFW; track topic.title; let i = $index) {
+
+      <button
+        type="button"
+        class="collectionFW"
+        [class.active]="selectedTopic === i"
+        (click)="selectTopic(i)"
+      >
+
+        <span>{{ topic.title }}</span>
+
+        <span>→</span>
+
+      </button>
+
+      }
+
+    </div>
+
+  </aside>
+
+
+  <!-- Main Content -->
+  <main class="content">
+
+    <span class="category-label">
+      Collection Framework
+    </span>
+
+    <h1>
+      {{ currentTopic.title }}
+    </h1>
+
+    <p class="description">
+      {{ currentTopic.description }}
+    </p>
+
+
+    <!-- Concept Explanation -->
+    <section class="lesson-section">
+
+      <h2>
+        📖 Concept Explanation
+      </h2>
+
+      <pre class="theory-content">{{ currentTopic.content }}</pre>
+
+    </section>
+
+
+    <!-- Java Code -->
+    <section class="lesson-section">
+
+      <h2>
+        💻 Java Code Example
+      </h2>
+
+      <div class="code-header">
+
+        <span>Java</span>
+
+        <span>Main.java</span>
+
+      </div>
+
+      <pre class="code-block"><code>{{ currentTopic.code }}</code></pre>
+
+    </section>
+
+
+    <!-- Expected Output -->
+    <section class="lesson-section">
+
+      <h2>
+        ▶ Expected Output
+      </h2>
+
+      <pre class="output"><code>{{ currentTopic.output }}</code></pre>
+
+    </section>
+
+
+    <!-- Navigation -->
+    <div class="lesson-navigation">
+
+      <button
+        type="button"
+        [disabled]="selectedTopic === 0"
+        (click)="selectTopic(selectedTopic - 1)"
+      >
+        ← Previous
+      </button>
+
+
+      <span class="topic-counter">
+        Topic {{ selectedTopic + 1 }}
+        of
+        {{ collectionFW.length }}
+      </span>
+
+
+      <button
+        type="button"
+        [disabled]="selectedTopic === collectionFW.length - 1"
+        (click)="selectTopic(selectedTopic + 1)"
+      >
+        Next →
+      </button>
+
+    </div>
+
+  </main>
+
+</div>

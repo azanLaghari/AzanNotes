@@ -1,0 +1,80 @@
+
+<header class="page-header">
+  <a href="/" class="back-link">← Home</a>
+
+  <span class="eyebrow">CAREER PREPARATION</span>
+  <h1>Java Interview Questions</h1>
+
+  <p>
+    Prepare for Java interviews with clear explanations
+    of important programming concepts.
+  </p>
+</header>
+
+<main class="interview-container">
+  <section class="toolbar">
+    <input
+      type="text"
+      placeholder="Search interview questions..."
+      [(ngModel)]="searchText"
+      aria-label="Search interview questions"
+    />
+
+    <select
+      [(ngModel)]="selectedCategory"
+      aria-label="Filter by category"
+    >
+      @for (category of categories; track category) {
+      <option [value]="category">{{ category }}</option>
+      }
+    </select>
+  </section>
+
+  <p class="results-count">
+    {{ filteredQuestions.length }} questions found
+  </p>
+
+  <section class="question-list">
+    @for (item of filteredQuestions; track item.question; let i = $index) {
+    <article class="question-card">
+      <button
+        class="question-button"
+        (click)="toggleAnswer(i)"
+        [attr.aria-expanded]="openQuestions.includes(i)"
+      >
+          <span class="question-number">
+            {{ i + 1 }}
+          </span>
+
+        <span class="question-title">
+            <strong>{{ item.question }}</strong>
+
+            <span class="question-meta">
+              {{ item.category }} · {{ item.difficulty }}
+            </span>
+          </span>
+
+        <span class="toggle-icon">
+            {{ openQuestions.includes(i) ? '−' : '+' }}
+          </span>
+      </button>
+
+      @if (openQuestions.includes(i)) {
+      <div class="answer">
+        <h3>Answer</h3>
+        <p>{{ item.answer }}</p>
+      </div>
+      }
+    </article>
+    } @empty {
+    <div class="empty-state">
+      <h3>No questions found</h3>
+      <p>Try another keyword or select a different category.</p>
+    </div>
+    }
+  </section>
+</main>
+
+<footer class="page-footer">
+  Keep learning and keep practicing Java.
+</footer>

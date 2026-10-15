@@ -1,0 +1,100 @@
+
+<header class="navbar">
+  <a class="logo" href="/">
+    <span class="logo-icon">J</span>
+    JavaNotes
+  </a>
+
+  <nav class="nav-links">
+    <a href="/">Home</a>
+    <a href="#topics">Java Topics</a>
+    <a href="#about">About</a>
+    <a href="/interview">Interview Prep</a>
+  </nav>
+
+  <a class="nav-button" href="#topics">Start Learning</a>
+</header>
+
+<main>
+  <section class="hero">
+    <span class="eyebrow">YOUR JAVA LEARNING HUB</span>
+
+    <h1>
+      Learn Java.<br />
+      <span>Build Your Future.</span>
+    </h1>
+
+    <p class="hero-description">
+      Master Java programming with clear notes, practical examples,
+      algorithms and interview preparation.
+    </p>
+
+    <div class="hero-actions">
+      <a class="primary-button" href="#topics">
+        Explore Java Notes →
+      </a>
+
+      <a class="secondary-button" href="/interview">
+        Interview Questions
+      </a>
+    </div>
+
+    <div class="hero-stats">
+      <div>
+        <strong>Core Java</strong>
+        <span>Fundamentals</span>
+      </div>
+      <div>
+        <strong>OOP</strong>
+        <span>Programming concepts</span>
+      </div>
+      <div>
+        <strong>DSA</strong>
+        <span>Problem solving</span>
+      </div>
+    </div>
+  </section>
+
+  <section class="topics-section" id="topics">
+    <div class="section-heading">
+      <span class="eyebrow">LEARN STEP BY STEP</span>
+      <h2>Explore Java Topics</h2>
+      <p>Everything you need to improve your Java skills.</p>
+    </div>
+
+    <div class="search-box">
+      <span>⌕</span>
+      <input
+        type="text"
+        placeholder="Search Java topics..."
+        [(ngModel)]="searchText"
+      />
+    </div>
+
+    <div class="topics-grid">
+      @for (topic of filteredTopics; track topic.title) {
+      <article class="topic-card">
+        <div class="topic-icon">{{ topic.icon }}</div>
+        <h3>{{ topic.title }}</h3>
+        <p>{{ topic.description }}</p>
+        <a [href]="topic.link">Explore topic →</a>
+      </article>
+      } @empty {
+      <p class="no-results">No topics found. Try another search.</p>
+      }
+    </div>
+  </section>
+
+  <section class="about-section" id="about">
+    <span class="eyebrow">ABOUT THIS WEBSITE</span>
+    <h2>Your Java journey starts here.</h2>
+    <p>
+      Learn concepts, read examples and practice programming
+      at your own pace.
+    </p>
+  </section>
+</main>
+
+<footer class="footer">
+  <p>© 2026 JavaNotes. Built for Java learners.</p>
+</footer>

@@ -1,0 +1,109 @@
+<div class="notes-layout">
+
+  <!-- Sidebar -->
+  <aside class="sidebar">
+
+    <a class="back-home" href="/">← Home</a>
+
+    <h2>Core Java</h2>
+    <p class="sidebar-subtitle">Learn Java step by step</p>
+
+    <div class="topic-list">
+      @for (topic of topics; track topic.title; let i = $index) {
+      <button
+        type="button"
+        class="topic-button"
+        [class.active]="selectedTopic === i"
+        (click)="selectTopic(i)">
+
+        <span>{{ topic.title }}</span>
+        <span>→</span>
+
+      </button>
+      }
+    </div>
+
+  </aside>
+
+  <!-- Main Content -->
+  <main class="content">
+
+<!--    <div class="breadcrumb">-->
+<!--      Java Notes / Core Java / {{ currentTopic.title }}-->
+<!--    </div>-->
+
+    <span class="category-label">CORE JAVA</span>
+
+    <h1>{{ currentTopic.title }}</h1>
+
+    <p class="description">
+      {{ currentTopic.description }}
+    </p>
+
+    <!-- Complete Theory -->
+    <section class="lesson-section">
+
+      <h2>📖 Concept Explanation</h2>
+
+      @if (currentTopic.content) {
+      <pre class="theory-content">{{ currentTopic.content }}</pre>
+      } @else {
+      <p>{{ currentTopic.description }}</p>
+      }
+
+    </section>
+
+    <!-- Java Code -->
+    <section class="lesson-section">
+
+      <h2>💻 Java Code Example</h2>
+
+      <div class="code-header">
+        <span>Java</span>
+        <span>Example.java</span>
+      </div>
+
+      <pre class="code-block"><code>{{ currentTopic.code }}</code></pre>
+
+    </section>
+
+    <!-- Expected Output -->
+    <section class="lesson-section">
+
+      <h2>▶ Expected Output</h2>
+
+      <pre class="output"><code>{{ currentTopic.output }}</code></pre>
+
+    </section>
+
+    <!-- Navigation -->
+    <div class="lesson-navigation">
+
+      <button
+        type="button"
+        [disabled]="selectedTopic === 0"
+        (click)="selectTopic(selectedTopic - 1)">
+
+        ← Previous
+
+      </button>
+
+      <span class="topic-counter">
+        Topic {{ selectedTopic + 1 }} of {{ topics.length }}
+      </span>
+
+      <button
+        type="button"
+        [disabled]="selectedTopic === topics.length - 1"
+        (click)="selectTopic(selectedTopic + 1)">
+
+        Next →
+
+      </button>
+
+    </div>
+
+  </main>
+
+</div>
+
